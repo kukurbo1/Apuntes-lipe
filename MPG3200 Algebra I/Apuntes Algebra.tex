@@ -294,12 +294,12 @@
 
 \begin{example}
   Si $M_n(\R)$ es el conjunto de matrices de $n \times n$ sobre $\R$, entonces
-  \[\GL_n(\R) = \{A \in M_n(\R) \colon \det(A) \neq 0\}\]
+  \[\GL_n(\R) = \{A \in M_n(\R) : \det(A) \neq 0\}\]
   es un grupo no abeliano.
 \end{example}
 
 \begin{example}
-  $\SL_n(\R) = \{A \in \GL_n(\R) \colon \det(A) = 1\}$ es un subgrupo de $\GL_n(\R)$.
+  $\SL_n(\R) = \{A \in \GL_n(\R) : \det(A) = 1\}$ es un subgrupo de $\GL_n(\R)$.
 \end{example}
 
 \begin{example}
@@ -309,10 +309,10 @@
 \end{example}
 
 \begin{example}
-  $S^1 = \{z \in \C \colon |z| = 1\}$ con la multiplicación.
+  $S^1 = \{z \in \C : |z| = 1\}$ con la multiplicación.
 
   Fijemos $n \geq 1$ entero.
-  \[\Z_n = \{z \in S^1 \colon z^n = 1\}.\]
+  \[\Z_n = \{z \in S^1 : z^n = 1\}.\]
   Se tiene que $\Z_n \leqslant S^1$.
 \end{example}
 
@@ -327,8 +327,8 @@
 \begin{definition}
   Sea $\phi \colon G \to H$ homomorfismo de grupos. La \wea{imagen} y el \wea{kernel} de $\phi$ son (resp.)
   \begin{align*}
-    \im(\phi) &= \{h \in H \colon \exists g \in G, \phi(g) = h\}, \\
-    \ker(\phi) &= \{g \in G \colon \phi(g) = 1_H\}.
+    \im(\phi) &= \{h \in H : \exists g \in G, \phi(g) = h\}, \\
+    \ker(\phi) &= \{g \in G : \phi(g) = 1_H\}.
   \end{align*}
 \end{definition}
 
@@ -378,7 +378,7 @@
 \end{example}
 
 \begin{notation}
-  Sea $\phi \colon G \o H$ homomorfismo. Diremos que
+  Sea $\phi \colon G \to H$ homomorfismo. Diremos que
   \begin{itemize}
     \item $\phi$ es \wea{monomorfismo} si $\phi$ es inyectivo.
     \item $\phi$ es \wea{epimorfismo} si $\phi$ es sobreyectivo.
@@ -525,7 +525,7 @@
 
 \begin{definition}
   Sea $G$ grupo y $S \subset G$. El \wea{subgrupo de $G$ generado por $S$} es
-  \[\gen{S} = \{g \in G \colon \exists n \geq 0 \colon g = s_1,\dots,s_n, \quad s_1,\dots,s_n \in S \cup S^{-1}\}.\]
+  \[\gen{S} = \{g \in G : \exists n \geq 0, \quad g = s_1,\dots,s_n, \quad s_1,\dots,s_n \in S \cup S^{-1}\}.\]
   Diremos que $S \subset G$ es \wea{generador} si $\gen{S} = G$.
   Diremos que $G$ es \wea{finitamente generado} si $\exists S \subset G$ finito y generador.
 \end{definition}
@@ -561,7 +561,7 @@
     \item $\sgn(\sigma) = -1$ si $\sigma$ es permutación impar.
   \end{itemize}
   El \wea{grupo alternante} es
-  \[A_n = \ker(\phi) = \{\sigma \in S_n \colon \sgn(\sigma) = 1\}.\]
+  \[A_n = \ker(\phi) = \{\sigma \in S_n : \sgn(\sigma) = 1\}.\]
 \end{definition}
 
 \begin{definition}
@@ -579,7 +579,7 @@
 
 \begin{definition}
   Sea $G$ un grupo, $H \leqslant G$. Una \wea{clase lateral} (\wea{izquierda} o \wea{derecha}) es
-  \[gH = \{gh \colon h \in H\}, \quad Hg = \{hg \colon h \in H\}\]
+  \[gH = \{gh : h \in H\}, \quad Hg = \{hg : h \in H\}\]
   para algún $g \in G$.
 \end{definition}
 
@@ -633,13 +633,13 @@
 
 \begin{definition}
   Dado $K \normal G$, el \wea{grupo cociente} es
-  \[\frac{G}{K} = \{gK \colon g \in G\}\]
+  \[\frac{G}{K} = \{gK : g \in G\}\]
   con la operación
   \[(gK) \c (hK) = ghK.\]
 \end{definition}
 
 \begin{definition}
-  Si $H \leqslant G$, el \wea{índice de $H$ en $G$} es $$[G \colon H] = \abs{\frac{G}{H}}.$$
+  Si $H \leqslant G$, el \wea{índice de $H$ en $G$} es $$[G : H] = \abs{\frac{G}{H}}.$$
 \end{definition}
 
 \begin{proposition}
@@ -708,7 +708,7 @@
 
 \begin{definition}
   Sean $H,N \leqslant G$, definimos
-  \[HN = \{g \in G \colon \exists h \in H, \exists n \in N, g = hn\}.\]
+  \[HN = \{g \in G : \exists h \in H, \exists n \in N, g = hn\}.\]
 \end{definition}
 
 \begin{proposition}
@@ -740,8 +740,8 @@
   \end{itemize}
   Luego $\phi$ es un epimorfismo, y entonces $$\frac{H}{\ker(\phi)} \simeq \frac{HN}{N}.$$ Notemos que
   \begin{align*}
-    \ker(\phi) &= \{h \in H \colon \phi(h) = N\} \\
-    &= \{h \in H \colon hN = N\} \\
+    \ker(\phi) &= \{h \in H : \phi(h) = N\} \\
+    &= \{h \in H : hN = N\} \\
     &= H \cap N.
   \end{align*}
   Entonces $$\frac{H}{H \cap N} = \frac{H}{\ker(\phi)} \simeq \frac{HN}{N}.$$
@@ -784,9 +784,9 @@
   \end{itemize}
   Por Primer Teorema del Isomorfismo, basta verificar que $$\ker(\phi) = \frac HN.$$
   \begin{align*}
-    \ker(\phi) &= \{gN \colon \phi(gN) = 1_{G/H} = H\} \\
+    \ker(\phi) &= \{gN : \phi(gN) = 1_{G/H} = H\} \\
     &= \{gN 'colon gH = H\} \\
-    &= \{gN \colon g \in H\} \\
+    &= \{gN : g \in H\} \\
     &= \frac HN.
   \end{align*}
 \end{proof}
@@ -849,8 +849,8 @@
 \begin{definition}
   Sea $G \acts X$ una acción de grupo.
   \begin{itemize}
-    \item La \wea{órbita de $x \in X$} es $$\orb_G(x) = \{g \c x \colon g \in G\}.$$
-    \item El \wea{estabilizador de $x \in X$} es $$\stab_G(x) = \{g \in G \colon g \c x = x\}.$$
+    \item La \wea{órbita de $x \in X$} es $$\orb_G(x) = \{g \c x : g \in G\}.$$
+    \item El \wea{estabilizador de $x \in X$} es $$\stab_G(x) = \{g \in G : g \c x = x\}.$$
   \end{itemize}
 \end{definition}
 
@@ -866,7 +866,7 @@
 \fecha{Clase 4. Miércoles 18 de Marzo}
 
 \begin{definition}
-  Decimos que una acción $G \acts X$ es \wea{fiel} si $$\forall g \in G \setminus \{1_G\}, \exists x \in X \colon g\c x \neq x.$$
+  Decimos que una acción $G \acts X$ es \wea{fiel} si $$\forall g \in G \setminus \{1_G\}, \exists x \in X, \quad g\c x \neq x.$$
 \end{definition}
 
 \begin{proposition}
@@ -905,7 +905,7 @@
 \end{example}
 
 \begin{example}
-  Considere $S^1 = \{z \in \C \colon \abs z = 1\}, \ \alpha \in [0,1)$. Tenemos una acción $\Z \acts S^1$ dada por $$n \c z = z e^{2\pi in\alpha}.$$
+  Considere $S^1 = \{z \in \C : \abs z = 1\}, \ \alpha \in [0,1)$. Tenemos una acción $\Z \acts S^1$ dada por $$n \c z = z e^{2\pi in\alpha}.$$
   Si $\alpha \in \Q, \alpha = p/q$ con $p,q \geq 1$ enteros y $p < q$, entonces la acción \wea{no} es fiel por
   \[q \c z = ze^{2\pi i \frac{p}{q} q} = ze^{1\pi i p} = z.\]
   Si $\alpha \notin \Q$ y $z \in S^1, \ n \in \Z$ son tales que $n \c z \implies e^{2\pi i n \alpha} = 1$. Por lo tanto $n\alpha \in \Z \implies n=0$. Entonces la acción es libre.
@@ -916,7 +916,7 @@
 \end{example}
 
 \begin{definition}
-  $G \acts X$ se dice \wea{transitiva} si $\forall x,y \in X, \exists g \in G \colon g\c x = y$.
+  $G \acts X$ se dice \wea{transitiva} si $\forall x,y \in X, \exists g \in G : g\c x = y$.
 \end{definition}
 
 \begin{proposition}
@@ -924,7 +924,7 @@
   \begin{enumerate}[(i)]
     \item $G \acts X$ es transitiva;
     \item $\forall x \in X, \orb_G(x) = X$;
-    \item $\exists x \in X \colon \orb_G(x) = X$.
+    \item $\exists x \in X : \orb_G(x) = X$.
   \end{enumerate}
 \end{proposition}
 
@@ -973,8 +973,8 @@
   Sea $G$ grupo finito y sea $p$ primo tal que $p$ divide a $\abs G$. Entonces $\zmz p \embed G$.
 \end{theorem}
 \begin{proof}
-  Consideremos $$X = \{(x_1,\dots,x_p) \in G^p \colon x_1 x_2 \cdots x_p = 1_G\}.$$
-  Notemos que $$X = \{(x_1,\dots,x_{p-1}, x_{p-1}^{-1}\cdots x_2^{-1}x_1^{-1}) \colon x_1,\dots,x_{p-1} \in G\}$$ y entonces $\abs X = \abs G^{p-1}$.
+  Consideremos $$X = \{(x_1,\dots,x_p) \in G^p : x_1 x_2 \cdots x_p = 1_G\}.$$
+  Notemos que $$X = \{(x_1,\dots,x_{p-1}, x_{p-1}^{-1}\cdots x_2^{-1}x_1^{-1}) : x_1,\dots,x_{p-1} \in G\}$$ y entonces $\abs X = \abs G^{p-1}$.
   Consideremos la acción $\zmz p \acts X$ por permutación cíclica mediante $$1 \c (x_1,\dots,x_p) = (x_2,x_3, \dots, x_p, x_1).$$
   Notemos que si $(x_1,\dots,x_p) \in X$, entonces
   \begin{align*}
@@ -996,7 +996,7 @@
 
 \begin{definition}
   Sea $G$ un grupo. La \wea{clase de conjugación de $h \in G$} es
-  \[C(h) \coloneqq \{ghg^{-1} \colon g \in G.\]
+  \[C(h) \coloneqq \{ghg^{-1} : g \in G.\]
 \end{definition}
 
 \begin{obs}
@@ -1021,7 +1021,7 @@
 
 \begin{definition}
   Sea $G$ un grupo. Su \wea{centro} es
-  \[Z(G) = \{g \in G \colon gh=hg, \quad \ h \in G\}.\]
+  \[Z(G) = \{g \in G : gh=hg, \quad \ h \in G\}.\]
 \end{definition}
 
 \begin{obs}
@@ -1030,7 +1030,7 @@
 
 \begin{definition}
   Sea $G$ grupo y $g \in G$. El \wea{centralizador de $g$} es
-  \[\Cent(g) = \{h \in G \colon hg = gh\}.\]
+  \[\Cent(g) = \{h \in G : hg = gh\}.\]
 \end{definition}
 
 \begin{obs}
@@ -1132,7 +1132,7 @@
 
     \item Para $(ab)(cd)$, consideremos el siguiente lema:
     \begin{lemma}
-      Sea $G$ grupo finito y $G \acts X$ transitiva. Sea $N \normal X$ con $[G \colon N] = 2$ tal que $N \acts X$ no es transitiva.
+      Sea $G$ grupo finito y $G \acts X$ transitiva. Sea $N \normal X$ con $[G : N] = 2$ tal que $N \acts X$ no es transitiva.
       Entonces $N \acts X$ tiene 2 órbitas de misma cardinalidad.
     \end{lemma}
     Aplicamos con $G = S_5$, $X = C_{S_5}((12)(34))$ con $N = A_5$ y $G \acts X$ por conjugación.
@@ -1195,8 +1195,8 @@
 El objetivo ahora es dar un ejemplo de un grupo simple infinito.
 
 Recordemos que
-\[S_\oo = \Sym_0(\Z) = \{\sigma \in \Sym(\Z) \colon \abs{\sop(\sigma)} < \oo\}\]
-donde $$\sop(\sigma) = \{n \in \Z \colon \sigma(n) \neq n\}.$$
+\[S_\oo = \Sym_0(\Z) = \{\sigma \in \Sym(\Z) : \abs{\sop(\sigma)} < \oo\}\]
+donde $$\sop(\sigma) = \{n \in \Z : \sigma(n) \neq n\}.$$
 
 Notemos que
 \[\Sym_0(\Z) = \bigcup_{n \geq 1} \Sym(\{-n, \dots, n\}).\]
@@ -1214,7 +1214,7 @@ Luego $\sgn \colon \Sym_0(\Z) \to \Z_2$ está bien definida y $A_\oo = \ker(\sgn
   Sea $G$ un grupo y sean $x,y \in G$. El \wea{conmutador de $x$ e $y$} es
   \[[x,y] = xyx^{-1}y^{-1}.\]
   El \wea{subgrupo derivado} (o \wea{subgrupo conmutador}) de $G$ es
-  \[G' = [G,G] = \gen{[x,y] \colon x,y \in G}.\]
+  \[G' = [G,G] = \gen{[x,y] : x,y \in G}.\]
 \end{definition}
 
 \begin{definition}
@@ -1388,11 +1388,11 @@ Vamos a ver solo el caso de grupos contables.
 
 \begin{definition}
   Sea $G$ un grupo y $S \subset G$. El \wea{grafo de Cayley de $G$ con respecto a $S$} es el grafo
-  \[\Cay(G,S) = (G,\{(g,gs) \colon s \in S , g \in G\}).\]
+  \[\Cay(G,S) = (G,\{(g,gs) : s \in S , g \in G\}).\]
 \end{definition}
 
 \begin{example}
-  $G = \Z$, $S=\{1\}$, tenemos $E = \{(n,n+1) \colon n \in \Z\}$.
+  $G = \Z$, $S=\{1\}$, tenemos $E = \{(n,n+1) : n \in \Z\}$.
   \[\begin{tikzcd}
     \cdots & \bullet & \bullet & \bullet & \bullet & \cdots
     \arrow[from=1-1, to=1-2]
@@ -1449,14 +1449,14 @@ Vamos a ver solo el caso de grupos contables.
 
   Además, si $S$ es finito y $1_G \in S$, entonces
   \[\forall g \in G, \forall r \geq 1, \quad \abs{B_S(g,r)} \leq \abs{S}^r\]
-  donde $B_S(g,r) = \{h \in G \colon d_S(g,b) \leq r\}$.
+  donde $B_S(g,r) = \{h \in G : d_S(g,b) \leq r\}$.
 
   Es decir, $\Cay(G,S)$ es \wea{localmente finito}.
 \end{obs}
 
 \begin{definition}
   Sea $G$ grupo y $S \subset G$ generador finito y simétrico. Para $g \in G$ definimos
-  \[\abs{g}_S = \min\{n \in \N \colon g = s_1,\dots,s_n, \quad s_i \in S\}.\]
+  \[\abs{g}_S = \min\{n \in \N : g = s_1,\dots,s_n, \quad s_i \in S\}.\]
   y definimos $\abs{1_G}_S = 0$.
 \end{definition}
 
@@ -1535,7 +1535,7 @@ Vamos a ver solo el caso de grupos contables.
 
 \begin{notation}
   Fijo $G$ y $S$. Definimos, para $g \in G$ y $r \in \N$,
-  \[B_S(g,r) \coloneqq \{h \in G \colon d_S(g,h) \leq r\}.\]
+  \[B_S(g,r) \coloneqq \{h \in G : d_S(g,h) \leq r\}.\]
   \[B_S(r) \coloneqq B_S(1_G,r).\]
 \end{notation}
 
@@ -1566,7 +1566,7 @@ Vamos a ver solo el caso de grupos contables.
 
 \begin{example}
   $\Z^d$ es de crecimiento polinomial. Si elegimos
-  \[S = \set{\sum_{i=1}^d a_ie_i \colon a_i \in \{-1,0,1\}}\]
+  \[S = \set{\sum_{i=1}^d a_ie_i : a_i \in \{-1,0,1\}}\]
   entonces $\abs{B_S(r)} = (2r+1)^d.$
 \end{example}
 
@@ -1578,7 +1578,7 @@ Vamos a ver solo el caso de grupos contables.
 
 \begin{exercise}
   El \wea{grupo de Heisenberg discreto} es
-  \[H = \set{\matr{1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1} \in \GL_3(\Z) \colon x,y,z \in \Z} \leqslant \GL_3(\Z).\]
+  \[H = \set{\matr{1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1} \in \GL_3(\Z) : x,y,z \in \Z} \leqslant \GL_3(\Z).\]
   $H$ es el ejemplo clásico de un grupo nilpotente infinito y finitamente generado. Tomamos
   \[S = \set{\matr{1&1&0\\0&1&0\\0&0&1}^\pm, \matr{1&0&1\\0&1&0\\0&0&1}^\pm, \matr{1&0&0\\0&1&1\\0&0&1}^\pm}.\]
   Pruebe que $H$ tiene crecimiento polinomial.
@@ -1586,7 +1586,7 @@ Vamos a ver solo el caso de grupos contables.
 
 \begin{theorem}
   [Gromov]
-  Un grupo $G$ finitamente generado tiene crecimiento polinomial si t solo si $\exists H \leqslant G$ con $[G \colon H] < \oo$ tal que $H$ es nilpotente.
+  Un grupo $G$ finitamente generado tiene crecimiento polinomial si t solo si $\exists H \leqslant G$ con $[G : H] < \oo$ tal que $H$ es nilpotente.
 \end{theorem}
 \begin{proof}
   No veremos la demostración, ya que requiere muchas cosas complicadas.
@@ -1612,7 +1612,7 @@ Vamos a ver solo el caso de grupos contables.
 
 \begin{definition}
   Sea $X$ un conjunto, considero a $X^-$ como un conjunto de ``inversos formales'':
-  \[X^- = \{x^{-1} \colon x \in X\}.\]
+  \[X^- = \{x^{-1} : x \in X\}.\]
 \end{definition}
 
 \begin{definition}
@@ -1697,8 +1697,8 @@ Vamos a ver solo el caso de grupos contables.
 \begin{example}
   Si $X = \{a\}$, entonces
   \begin{align*}
-    F(\{a\}) &= \{\w \in \{a,a^{-1}\}^\star \colon aa^{-1}, a^{-1} a \text{ no están en } \w\} \\
-    &= \{a^n \colon n \geq 1\} \cup \{a^{-n} \colon n \geq 1\} \cup \{\e\} \\
+    F(\{a\}) &= \{\w \in \{a,a^{-1}\}^\star : aa^{-1}, a^{-1} a \text{ no están en } \w\} \\
+    &= \{a^n : n \geq 1\} \cup \{a^{-n} : n \geq 1\} \cup \{\e\} \\
     \simeq \Z.
   \end{align*}
 \end{example}
@@ -1845,7 +1845,7 @@ Vamos a ver solo el caso de grupos contables.
 
 \begin{definition}
   Dado $G = \gen{S}$ con $S$ finito. El \wea{problema de la palabra} de $G$ es
-  \[\mathrm{WP}_S(G) = \{\w \in (S \cup S^{-1})^\star \colon \underline{\w}_G = 1_G\}.\]
+  \[\mathrm{WP}_S(G) = \{\w \in (S \cup S^{-1})^\star : \underline{\w}_G = 1_G\}.\]
 \end{definition}
 
 \begin{theorem}
@@ -1903,8 +1903,8 @@ Una versión más elegante del lema del Ping Pong es la siguiente:
   H_2 = \gen{g_2} \simeq \Z.\]
   Consideremos
   \begin{align*}
-    X_1 &= \{[x:y] \in \R P^1 \colon \abs x > \abs y\}, \\
-    X_2 &= \{[x:y] \in \R P^1 \colon \abs y > \abs x\}.
+    X_1 &= \{[x:y] \in \R P^1 : \abs x > \abs y\}, \\
+    X_2 &= \{[x:y] \in \R P^1 : \abs y > \abs x\}.
   \end{align*}
   Notemos que si $[x:y] \in X_2$, entonces $g_1 \matr{x\\y} \in X_1$, y si $[x:y] \in X_1$, entonces $g_2 \matr{x\\y} \in X_2$.
 
@@ -1945,7 +1945,7 @@ Vamos a ver una parte del Teorema de clasificación de grupos abelianos finitame
 
 \begin{definition}
   Sea $G$ un grupo y $g \in G$. el \wea{orden de $g$} se define como
-  \[\ord(g) = \min\{n \geq 2 \colon g^n = 1\},\]
+  \[\ord(g) = \min\{n \geq 2 : g^n = 1\},\]
   \[\ord(g) = \oo \iff \gen{g} \simeq \Z.\]
   $g$ se dice \wea{de torsión} si $\ord(g) < \oo$.
   $g$ se dice \wea{no de torsión} si $\ord(g) = \oo$.
@@ -1967,7 +1967,7 @@ Vamos a ver una parte del Teorema de clasificación de grupos abelianos finitame
 
 \begin{definition}
   Dado un grupo $G$, definimos el \wea{exponente de $G$} como
-  \[\exp(G) = \min\{n \geq 1 \colon \forall g \in G, g^n = 1\}.\]
+  \[\exp(G) = \min\{n \geq 1 : \forall g \in G, g^n = 1\}.\]
 \end{definition}
 
 \begin{obs}
@@ -1983,10 +1983,10 @@ Vamos a ver una parte del Teorema de clasificación de grupos abelianos finitame
 \newpage %% error mdframed
 \begin{obs}
   Si $\abs G < \oo$, entonces
-  \[\exp(G) = \lcm\{\ord(g) \colon g \in G\}.\]
+  \[\exp(G) = \lcm\{\ord(g) : g \in G\}.\]
 \end{obs}
 \begin{proof}
-  Sea $M = \lcm\{\ord(g) \colon g \in G\}$. Notemos que $M \leq \exp(G)$, pues $\forall g \in G$, $\ord(g) \mid \exp(G)$.
+  Sea $M = \lcm\{\ord(g) : g \in G\}$. Notemos que $M \leq \exp(G)$, pues $\forall g \in G$, $\ord(g) \mid \exp(G)$.
 
   Por otro lado, $g^M = 1$ para todo $g \in G$, y justamente $\exp(G)$ es el menor entero positivo que cumple esto, por lo que $\exp(G) \leq M$. Concluimos que $\exp(G) = M$.
 \end{proof}
@@ -2002,7 +2002,7 @@ Vamos a ver una parte del Teorema de clasificación de grupos abelianos finitame
 \begin{definition}
   Para $d \geq 1$ defino
   \begin{align*}
-    E_d \olon G &\to G \\
+    E_d \colon G &\to G \\
     g &\mapsto g^d.
   \end{align*}
   Escribimos $G_d = \ker(E_d)$ y $E_d(G) = \im(E_d)$.
@@ -2085,7 +2085,7 @@ Otra definición equivalente a la del producto semidirecto es la siguiente:
 \end{definition}
 
 \begin{proposition}
-  En el caso anterior, existe una acción natural $\a \colon K \o \Aut(H)$ con $\a_k(h) = khk^{-1}$, y se cumple que $G \simeq H \rtimes_\a K$, $hk \mapsto (h,k)$.
+  En el caso anterior, existe una acción natural $\a \colon K \to \Aut(H)$ con $\a_k(h) = khk^{-1}$, y se cumple que $G \simeq H \rtimes_\a K$, $hk \mapsto (h,k)$.
 \end{proposition}
 
 \begin{notation}
@@ -2110,13 +2110,13 @@ Otra definición equivalente a la del producto semidirecto es la siguiente:
 
 \begin{example}
   Consideremos
-  \[\H = \set{\matr{1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1} \colon a,b,c \in \Z}\]
+  \[\H = \set{\matr{1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1} : a,b,c \in \Z}\]
   Notemos que la operación es
   \[\matr{1&a&b \\ 0&1&c \\ 0&0&1} \matr{1&x&y \\ 0&1&z \\ 0&0&1} = \matr{1 & a+x & az+b+y \\ 0 & 1 & cz \\ 0 & 0 & 1}\]
   Notemos que $\H \simeq \Z^2 \ltimes_A \Z$.
   \begin{align*}
-    \Z^2 &\simeq \set{\matr{1&a&b \\ 0 & 1 & 0 \\ 0 & 0 & 1} \colon a,b \in \Z} = H, \\
-    \Z &\simeq \set{\matr{1&0&0 \\ 0&1&c \\ 0&0&1} \colon c \in \Z} = K.
+    \Z^2 &\simeq \set{\matr{1&a&b \\ 0 & 1 & 0 \\ 0 & 0 & 1} : a,b \in \Z} = H, \\
+    \Z &\simeq \set{\matr{1&0&0 \\ 0&1&c \\ 0&0&1} : c \in \Z} = K.
   \end{align*}
   \begin{itemize}
     \item $\H = HK$ %% Comprobar
@@ -2135,7 +2135,7 @@ Otra definición equivalente a la del producto semidirecto es la siguiente:
 
 \subsection{Producto en Corona (Wreath Product)}
 
-Supongamos que tenemos un conjunto de índices $I$ y una acción $K \acts I$ (i.e.: un homomorfismo $\a \colon K \o B_{ij}(I,I)$). Este $\a$ induce una acción del grupo $K$ en cualquier grupo $H^I$, que envía $(h_j)_{j \in I}$ a $(h_{\a(j)})_{j \in I}$. El producto semidirecto $H^I \rtimes K$ se llama \wea{producto en corona}.
+Supongamos que tenemos un conjunto de índices $I$ y una acción $K \acts I$ (i.e.: un homomorfismo $\a \colon K \to B_{ij}(I,I)$). Este $\a$ induce una acción del grupo $K$ en cualquier grupo $H^I$, que envía $(h_j)_{j \in I}$ a $(h_{\a(j)})_{j \in I}$. El producto semidirecto $H^I \rtimes K$ se llama \wea{producto en corona}.
 
 \fecha{Clase 12. Miércoles 15 de Abril}
 
@@ -2497,7 +2497,7 @@ Ahora demostraremos Banach--Tarski:
   Esta función está definida. Es homomorfismo: 
   \[ M(k \c k') = m_{k \c k'} = m_k \circ m_{k'} = M(k) \circ M(k'). \]
   Es inyectiva: Si $k >1$, entonces $m_k(1) = k \neq 1$. Luego 
-  \[ \ker(M) = \set{k \in \znz n \olon m_k = \id} = \{1\}. \]
+  \[ \ker(M) = \set{k \in \znz n \colon m_k = \id} = \{1\}. \]
   Es sobreyectiva, ya que si $\a \in \Aut(\zmz n)$ y $\ell \in \zmz n$, entonces 
   \[ \a(\ell) = \underbrace{\a(1) + \dots + \a(1)}_{\ell \ veces} = \ell \c \a(1). \]
   Luego $\forall \ell \in \zmz n$, $\a(\ell) = \ell \c \a(1)$, y entonces $\a = m_{\a(1)}$. Como $\a \in \Aut(\zmz n)$, entonces $\a(1) \in (\zmz n)^*$. Por lo tanto $\a = M(\a(1))$.
@@ -2511,9 +2511,9 @@ Ahora demostraremos Banach--Tarski:
 
 \begin{definition}
   Un conjunto $A$ dotado de dos operaciones $+$ y $\c$ se llama \wea{anillo} si
-  \begin{enumerate}
+  \begin{enumerate}[(1)]
     \item $(A,+)$ es grupo abeliano (con neutro $0_A$),
-    \item $(A,\c)$ es semigrupo, %% definir semigrupo
+    \item $(A,\c)$ es semigrupo (magma asociativo),
     \item $\c$ distribuye sobre $+$: $\forall a,b,c \in A$, 
     \[ a\c (b+c) = ab + ac, \quad (b+c) \c a = ba + ca. \]
   \end{enumerate}
@@ -2553,7 +2553,8 @@ Ahora demostraremos Banach--Tarski:
 \end{definition}
 
 \begin{obs}
-  Sea $(A,+,\c)$. \begin{enumerate}
+  Sea $(A,+,\c)$.
+  \begin{enumerate}[(1)]
     \item $\forall a \in A, \quad a \c 0 = 0 \c a = 0$.
     \item Si $A$ tiene unidad 1 y $1=0$, entonces $\abs A = 1$.
   \end{enumerate}
@@ -2569,7 +2570,7 @@ Ahora demostraremos Banach--Tarski:
 
 \begin{example}
   Sea $\xi \in \C$, definimos 
-  \[ \Q(\xi) = \{a + b \xi \in \C \colon a,b \in \Q\}. \]
+  \[ \Q[\xi] = \{a + b \xi \in \C : a,b \in \Q\}. \]
   Esto es un anillo.
 \end{example}
 
@@ -2715,7 +2716,14 @@ Ahora demostraremos Banach--Tarski:
 \end{exercise}
 
 \begin{definition}
-  Si $\vphi \colon A \to B$ es homomorfismo de anillos biyectivo, se dice \wea{isomorfismo de anillos}. %% escribir las definiciones de epimorfismo, endomorfismo, monomorfismo.
+  Sea $\phi \colon A \to B$ homomorfismo de anillos. Diremos que
+  \begin{enumerate}[(i)]
+    \item $\phi$ es \wea{epimorfismo de anillos} si es sobreyectivo.
+    \item $\phi$ es \wea{monomorfismo de anillos} si es inyectivo.
+    \item $\phi$ es \wea{isomorfismo de anillos} si es biyectivo.
+    \item $\phi$ es \wea{endomorfismo de anillos} si $A=B$.
+    \item $\phi$ es \wea{automorfismo de anillos} si es isomorfismo y endomorfismo.
+  \end{enumerate}
 \end{definition}
 
 \begin{exercise}
