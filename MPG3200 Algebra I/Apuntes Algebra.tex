@@ -3350,7 +3350,78 @@ Ahora, dado $R$ un DI, queremos encontrar algún cuerpo $K$ tal que $R \embed K$
   $d$ es gcd de $\{a,b\}$ si y solo si $(a) + (b) = (d)$. $m$ es lcm de $\{a,b\}$ si y solo si $(m) = (a) \cap (b)$.
 \end{example} %% demostrar
 
-%\fecha{Clase 21.}
+\newpage
+\fecha{Clase 21. Lunes 1 de Junio}
+\subsubsection{Dominios Euclideanos}
+
+\begin{definition}
+  Un DI $R$ se dice \wea{dominio Euclideano} (abreviado como \wea{DE}) si $\exists \nu \colon R \setminus \{0\} \to \N$ tal que 
+  \begin{enumerate}[(i)]
+    \item $\forall a,b \neq 0, \quad \nu(a) \leq \nu(ab)$.
+    \item $\forall a,b \in R \setminus \{0\}$, $\exists q,r \in R$ tal que $a = qb+r$ con $r = 0$ o $\nu(r) < \nu(b)$.
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  $\Z$ es un DE con el valor absoluto.
+\end{example}
+
+\begin{proposition}
+  Si $k$ es un cuerpo, entonces $k[x]$ es DE.
+\end{proposition}
+\begin{proof}
+  Tomamos $\nu(p(x)) = \deg{p(x)}$. La hipótesis de cuerpo sirve para el algoritmo de la división.
+\end{proof}
+
+\begin{obs}
+  Con esto tenemos que todo $p(x) \in k[x]$ tiene a lo más $\deg{p}$ raíces. Esto no funciona siempre en anillos que no sean cuerpos. Por ejemplo, $x^2 - 1 \in \zmz8[x]$ tiene 3 raíces: 1, 7 y 3.
+\end{obs}
+
+\begin{lemma}
+  Sea $R$ un DE con valuación $\nu$. Entonces 
+  \[ x \in R^\times \iff \nu(x) = \min_{r \in R \setminus \{0\}} \nu(r). \]
+\end{lemma}
+\begin{proof}
+  \ \begin{itemize}
+    \item \boxed{\impliedby} Si $x$ tiene norma mínima, entonces por el algoritmo de división con 1, tenemos que existen $q,r \in R$ tales que 
+    \[ 1 = qx+r \]
+    con $r = 0$ o $\nu(r) < \nu(x)$, pero como la norma de $x$ es mínima, tenemos que $r = 0$, y entonces $qx = 1$. Por lo tanto $x \in R^\times$.
+    \item \boxed{\implies} Si $x \in R^\times$, entonces tiene inverso $x^{-1}$. No me acuerdo como continua la demostración fkgjfkgjk %% completar.
+  \end{itemize}
+\end{proof}
+
+\begin{proposition}
+  Todo DE es DIP.
+\end{proposition}
+\begin{proof}
+  Sea $A$ un DE y sea $I \subseteq A$ un ideal. Como la imagen de $\nu$ es discreta, existe $a_0 \in I$ tal que $\nu(a_0) \leq \nu(a)$ para todo $a \in I \setminus \{0\}$. Sea $b \in I \setminus \{0\}$, entonces existen $q,r \in R$ tales que 
+  \[ b = qa_0 + r \]
+  Con $r = 0$ o $\nu(r) < \nu(a_0)$. Notemos que $r = 0$, ya que en el caso contrario tendríamos $r = b - qa_0 \in I$ con valuación menor a $a_0$. Por lo tanto $b = qa_0$ y entonces $b \in (a_0)$. Luego $I \subseteq (a_0)$, y entonces $I = (a_0)$.
+\end{proof}
+
+\begin{proposition}
+  $\Z[x]$ no es DE.
+\end{proposition}
+\begin{proof}
+  El ideal $(2,x) \subseteq \Z[x]$ no es principal. Entonces no es DIP, y entonces no es DE.
+\end{proof}
+
+\begin{exercise}
+  Mostrar que $\R[x,y]$ no es DE.
+\end{exercise}
+
+\begin{example}
+  $\Z[i]$ es un DE, con $\nu = N^2$ donde $N \colon \C \to \R$ es la norma usual: $\nu(a+bi) = a^2 + b^2$.
+\end{example}
+
+\begin{obs}
+  $N^2(zw) = N^2(z) N^2(w)$. Como $N^2$ toma valores positivos en $\Z[i] \setminus \{0\}$, $N^2$ cumple la propiedad $N^2(z) \leq N^2(zw)$. 
+\end{obs}
+
+\begin{example}
+  $\Z[\sqrt{-5}]$ no es DFU. Además no es DE.
+\end{example}
+
 %\fecha{Clase 22.}
 %\fecha{Clase 23.}
 %\fecha{Clase 24.}
@@ -3367,9 +3438,8 @@ Ahora, dado $R$ un DI, queremos encontrar algún cuerpo $K$ tal que $R \embed K$
 \begin{theorem}
   Tenemos las siguientes equivalencias de anillos:
   \begin{itemize}
-    \item DI $\implies$ DFU.
-    \item DIP $\implies$ DFU.
-    \item 
+    \item DE $\implies$ DIP $\implies$ DFU $\implies$ DI.
+    \item Hay DFUs no Noetherianos y hay Noetherianos no DFU.
   \end{itemize}
 \end{theorem}
 
