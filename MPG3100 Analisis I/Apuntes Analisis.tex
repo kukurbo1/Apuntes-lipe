@@ -2519,9 +2519,78 @@ La idea de la demostración es:
   Paso 4: Ejercicio %% no olvidar
 \end{proof}
 
-%\fecha{Clase 21.}
-%\fecha{Clase 22.}
-%\fecha{Clase 23.}
+\fecha{Clase 21.}
+\fecha{Clase 22.}
+
+\newpage
+\subsection{Continuidad absoluta de medidas y Radón--Nikodyn}
+%% Falta tipear clases 21 y 22.
+\fecha{Clase 23.}
+
+\begin{definition}
+  Sea $(X,\Acal)$ espacio de medida y $\mu,\nu$ medidas en $(X,\Acal)$. Decimos que $\nu$ es \wea{absolutamente continua con respecto a $\mu$} si
+  \[ \forall A \in \Acal (\mu(A) = 0 \implies \nu(A) = 0). \]
+  Se denota $\nu <<\mu$. Si $\nu$ es medida con signo, entonces $\nu$ es \wea{absolutamente continua con respecto a $\mu$} si $\abs\nu << \mu$ (donde $\abs\nu = \nu^+ + \nu^-$ con $\nu^+,\nu^-$ de la descomposición de Jordan).
+\end{definition}
+
+\begin{example}
+  Sea $f \colon X \to [0,\oo]$ y $f \in \Lcal^1(X,\Acal, \mu)$. Consideramos $\nu$ dada por
+  \[ \nu(A) = \int_A f \d\mu. \]
+  Entonces $\nu << \mu$.
+\end{example}
+
+\begin{lemma}
+  Sea $(X,\Acal)$ espacio de medida, $\mu$ una medida y $\nu$ medida finita. Entonces
+  \[ \nu << \mu \iff \forall \e>0, \exists \delta>0, (\mu(A) < \delta \implies \nu(A) < \e). \]
+\end{lemma}
+
+\begin{theorem}
+  [Radón-Nikodyn]
+  Sea $(X,\Acal)$ espacio de medida y sean $\mu,\nu$ medidas $\sigma$-finitas. Si $\nu << \mu$, entonces existe $g \colon X \to [0,\oo]$ tal que 
+  \[ \nu(A) = \int_A g \d\mu. \]
+  Además, $g$ es única a.e. (salvo conjuntos de medida 0).
+\end{theorem}
+\begin{proof}
+  Supongamos primero que $\mu$ y $\nu$ son finitas. Sea
+  \[ \Fcal = \set{f \colon X \to [0,\oo] : \forall A \in \Acal, \quad \int_A f\d\mu \leq \nu(A)}. \]
+  Notemos que $\Fcal \neq \varnothing$, pues $0 \in \Fcal$.
+  La idea es primero mostrar que existe $g$ tal que
+  \[ \int_X g \d\mu = \sup \set{\int_X f\d\mu : f \in \Fcal} \]
+  y después mostrar que $g$ es el que sirve para todo $A \in \Acal$.
+  Notemos que $f_1, f_2 \in \Fcal$ implica que $f(x) = \max\{f_1(x),f_2(x)\} \in \Fcal$. Esto ya que si consideramos
+  \begin{align*}
+      A_1 &= \{x \in X : f_1(x) \geq f_2(x)\} \\
+      A_2 &= \{x \in X : f_2(x) > f_1\}
+  \end{align*}
+  Entonces
+  \begin{align*}
+      \int_A f\d\mu
+      &= \int_{A \cap A_1} f \d\mu + \int_{A \cap A_2} f \d\mu \\
+      &= \int_{A \cap A_1} f_1 \d\mu + \int_{A \cap A_2} f_2 \d\mu \\
+      &\leq \nu(A \cap A_1) + \nu(A \cap A_2) = \nu(A).
+  \end{align*}
+  Notemos que $A_1 \cap A_2 = \varnothing$ y $A_1 \cup A_2 = X$. Tomemos $\tilde f_n$ tal que
+  \[ \int_X \tilde f_n \d\mu \to \sup\set{\int_X f\d\mu : f \in \Fcal}. \]
+  Tenemos que $\tilde f_n \in \Fcal$ y $f_n (x) = \max\{f_i(x) : i \in \{1,\dots,n\}\}$. Luego
+  \begin{align*}
+      f_{n+1}(x) &\geq f_n(x) \\
+      \implies \lim_{n\to\oo} \int_X f_n &= \int_X \lim_{n\to\oo} f_n \d\mu.
+  \end{align*}
+  Definimos $g(x) = \lim_{n\to\oo} f(x) \in [0,\oo]$, y entonces 
+  \[ \int_X g\d\mu = \sup\set{\int_X f\d\mu : f \in \Fcal}. \]
+\end{proof}
+
+\begin{notation}
+  $g$ se anota como $\ds \frac{\d\nu}{\d\mu}$ y se llama \wea{derivada de Rad+on-Nikodym}.
+\end{notation}
+
+\begin{obs}
+  \ \begin{itemize}
+    \item Si $\mu$ es medida, entonces $\ds \frac{\d\mu}{\d\mu} = 1$.
+    \item Si $\mu$ es medida con signo, entonces $\mu << \abs \mu$ y $\ds \abs{\frac{\d\mu}{\d\abs\mu}} = 1$, donde $\abs\mu(A) = \mu_+(A) + \mu_-(A)$.
+  \end{itemize}
+\end{obs}
+
 %\fecha{Clase 24.}
 %\fecha{Clase 25.}
 %\fecha{Clase 26.}
