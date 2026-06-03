@@ -3339,16 +3339,12 @@ Ahora, dado $R$ un DI, queremos encontrar algún cuerpo $K$ tal que $R \embed K$
 \begin{definition}
   Sea $R$ un DI y $S \subset R$ finito.
   \begin{itemize}
-    \item Decimos que $a \in R$ es \wea{máximo común divisor de $S$} (abreviado como \wea{gcd}) si $\forall b \in R$ 
+    \item Decimos que $a \in R$ es \wea{máximo común divisor de $S$} (abreviado como \wea{gcd}) si
     \[ \forall b \in R (\forall s \in S (b \mid s) \implies b \mid a). \]
     \item Decimos que $a \in R$ es \wea{máximo común múltiplo de $S$} (abreviado como \wea{lcm}) si 
     \[ \forall b \in R (\forall s \in S(s \mid b) \implies a \mid b). \]
   \end{itemize}
 \end{definition}
-
-\begin{example}
-  $d$ es gcd de $\{a,b\}$ si y solo si $(a) + (b) = (d)$. $m$ es lcm de $\{a,b\}$ si y solo si $(m) = (a) \cap (b)$.
-\end{example} %% demostrar
 
 \newpage
 \fecha{Clase 21. Lunes 1 de Junio}
@@ -3422,7 +3418,34 @@ Ahora, dado $R$ un DI, queremos encontrar algún cuerpo $K$ tal que $R \embed K$
   $\Z[\sqrt{-5}]$ no es DFU. Además no es DE.
 \end{example}
 
-%\fecha{Clase 22.}
+\fecha{Clase 22. Miércoles 3 de Junio}
+
+\begin{definition}
+  Sea $A$ un DI y $a,b \in A$. Decimos que $d \in A$ es un \wea{máximo común divisor (mcd) de $a$ y $b$} si
+  \[ d \mid a \ \land \ d \mid b \ \land \ \forall t \ \br{(t \mid a \land t \mid b) \implies t \mid d}. \]
+\end{definition}
+
+\begin{theorem}
+  [Euclides]
+  Sea $A$ un DE y sean $a,b \in A \setminus \{0\}$. Definimos $q_i$ y $r_i$ inductivamente por
+  \begin{align*}
+      a &= q_0 b + r_0, \quad \nu(r_0) < \nu(b) \\
+      b &= q_1 r_0 + r_1, \quad \nu(r_1) < \nu(r_0) \\
+      r_0 &= q_2 r_1 + r_2, \quad \nu(r_2) < \nu(r_1) \\
+      &\vdots \\
+      r_{n-2} &= q_{n-1} r_{n-1} + r_n.
+  \end{align*}
+  Entonces $\exists n \geq 0$ entero tal que $r_{n-1} = q_n r_n$ y $r_n$ es mcd de $a$ y $b$.
+\end{theorem}
+
+\begin{exercise}
+  Buscar mcd de $q(x) = x^3 + 3x^2 + x$ y $b(x) = x^3 - x$ en $\Q[x]$.
+\end{exercise}
+
+\begin{theorem}
+  $\Z\cor{\frac{1+\sqrt{-19}}{2}}$ es DIP, pero no es DE.
+\end{theorem}
+
 %\fecha{Clase 23.}
 %\fecha{Clase 24.}
 %\fecha{Clase 25.}
