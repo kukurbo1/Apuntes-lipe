@@ -2519,34 +2519,290 @@ La idea de la demostración es:
   Paso 4: Ejercicio %% no olvidar
 \end{proof}
 
-\fecha{Clase 21.}
-\fecha{Clase 22.}
+\newpage
+\fecha{Clase 21. Lunes 25 de Mayo}
+\subsection{Medidas y \texorpdfstring{$\sigma$}{sigma}-álgebras Producto}
+
+\begin{definition}
+  Si $(X,\Acal)$ e $(Y,\Bcal)$ son espacios de medida, la \wea{\( \sigma \)-álgebra producto} la denotaremos como $\Acal \otimes \Bcal$, y se define como la \( \sigma \)-álgebra generada por
+  \[ \{A \times B : A \in \Acal \land B \in \Bcal\}. \]
+\end{definition}
+
+\begin{definition}
+  Si $E \subseteq X \times Y$, la \wea{$x$-sección de $E$} es
+  \[ E_x = \{y \in Y : (x,y) \in E\}. \]
+  La \wea{$y$-sección de $E$} es
+  \[ E^y = \{x \in X : (x,y) \in E\}. \]
+\end{definition}
+
+\begin{proposition}
+  Si $(X,\Acal)$ e $(Y,\Bcal)$ son espacios de medida y $E \in \Acal \otimes \Bcal$, entonces $E_x$ es $\Bcal$-medible y $E^y$ es $\Acal$-medible.
+\end{proposition}
+\begin{proof}
+  Consideremos el conjunto
+  \[ M = \{E \subseteq X \times Y : E_x \text{ es $\Bcal$-medible } \land E^y \text{ es $\Acal$-medible}\}. \]
+  Primero notemos que si $E = A \times B$, entonces $E_x = B$ y $E^y = A$. Si $A$ es $\Acal$-medible y $B$ es $\Bcal$-medible, entonces $E \in M$.
+  Veamos que $M$ es \( \sigma \)-álgebra:
+  \begin{itemize}
+    \item $\emptyset = \emptyset \times \emptyset \subseteq X \times Y$. Como $\Acal$ y $\Bcal$ son \( \sigma \)-álgebras, entonces $\emptyset \in \Acal \cap \Bcal$, y entonces $\emptyset \in M$.
+    \item Si $E \in M$, notemos que
+    \begin{align*}
+      (E_x)^c &= \{y \in B : (x,y) \in E\}^c \\
+      &= \{y \in B : (x,y) \notin E\} \\
+      &= \{y \in B : (x,y) \in E^c\} \\
+      &= (E^c)_x.
+    \end{align*}
+    Similarmente, $(E^y)^c = (E^c)^y$. Luego
+    \begin{align*}
+        E \in M &\iff E_x \in \Bcal \ \land \ E^y \in \Acal \\
+        &\iff (E_x)^c \in \Bcal \ \land \ (E^y)^c \in \Acal \\
+        &\iff (E^c)_x \in \Bcal \ \land \ (E^c)^y \in \Acal \\
+        &\iff E^c \in M.
+    \end{align*}
+    \item Notemos que
+    \[ \br{\bigcup_{i\in\N} E_i}_x = \bigcup_{i\in\N} (E_i)_x \]
+    y entonces $E_i \in M \implies \bigcup_{i\in\N} E_i \in M$.
+  \end{itemize}
+  Por lo tanto $M$ es \( \sigma \)-álgebra, y entonces $\Acal \otimes \Bcal \subseteq M$.
+\end{proof}
+
+\begin{obs}
+  Esto dice que $\Bcal(\R^n) \otimes \Bcal(\R^m) \supseteq \Bcal(\R^{n+m})$. Se puede demostrar que $\Bcal(\R^{n+m}) = \Bcal(\R^n) \otimes \Bcal(\R^m)$. %% demostrar.
+\end{obs}
+
+\begin{definition}
+  Sea $\Ecal$ un álgebra. Una \wea{premedida sobre $\Ecal$} es una función
+  \[ \lam \colon \Ecal \to [0,\oo] \]
+  tal que
+  \begin{enumerate}[(1)]
+    \item $\lam(\emptyset) = 0$.
+    \item $\lam\br{\bigcup_{i\in\N} E_i} = \sum_{i=1}^\oo \lam(E_i)$ con $E_i \in \Ecal$ disjuntos de a pares y $\bigcup_{i\in\N} E_i \in \Ecal$.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Sea $\Ecal$ un álgebra y $\lam$ un premedida en $\Ecal$. Definimos
+  \[ \lam^*(E) = \inf\set{\sum_{i\in\N} \lam(E_i) : E \subseteq \bigcup_{i\in\N} E_i \ \land \ \{E_i\}_{i\in\N} \subseteq \Ecal}. \]
+\end{definition}
+
+\begin{exercise}
+  $\lam^*$ es medida exterior.
+\end{exercise}
+
+\begin{proposition}
+  Si $A \in \Ecal$, entonces $A$ es Caratheodory-medible y $\lam^*(A) = \lam(A)$.
+\end{proposition}
+
+\begin{obs}
+  Esta extensión de la medida sobre el álgebra solo se puede garantizar que sea única si $\lam$ es $\sigma$-finita.
+\end{obs}
+
+\begin{definition}
+  Sean $(X,\Acal,\mu)$ e $(Y,\Bcal,\nu)$ espacios de medida. Si $\{A \times B \in X \times Y : A \in \Acal \ \land B \in \Bcal\}$ ``funciona bien con uniones'', %% (???)
+  entonces $\mu \otimes \nu(A \times B) = \mu(A) \nu(B)$ genera una premedida en el álgebra generada por los rectángulos (tomando $\oo \cdot 0 = 0$).
+\end{definition}
+
+\begin{obs}
+  El conjunto de rectángulos no es un álgebra, pero basta para la definición anterior si $\mu \otimes \nu$ cumple las propiedades de remedida en este conjunto.
+
+  $\mu \otimes \nu(\emptyset) = \mu(\emptyset) \nu(\emptyset) = 0$, y si $A \times B = \bigcup_{i \in \N} (A_i \times B_i)$ con $A_i \times B_i$ disjuntos de a pares, entonces
+  \[ \Chi{A \times B} (x,y) = \Chi{A}(x) \Chi{B}(y) \]
+  
+  \begin{align*}
+      \implies \Chi{\bigcup_{i\in\N}(A_i \times B_i)}(x,y)
+      &= \sum_{i\in \N} \Chi{A_i \times B_i} (x,y) \\
+      &= \sum_{i \in \N} \Chi{A_i}(x) \Chi{B_i}(y).
+  \end{align*}
+  Integrando con respecto a $x$:
+  \[ \mu(A) \Chi{B}(y) = \sum_{i \in \N} \mu(A_i) \Chi{B}(y). \]
+  Integrando esto en $y$, obtenemos
+  \[ \mu \otimes \nu(A \times B) = \mu(A) \nu(B) = \sum_{i\in\N} \mu(A_i) \nu(B_i) = \sum_{i\in\N} \mu \otimes \nu(A_i \times B_i). \]
+  Esto define una medida exterior en que los rectángulos son medibles y $\Acal \otimes \Bcal$ está contenida en los $\mu \otimes \nu$-medibles.
+\end{obs}
+
+\begin{lemma}
+  Si $f \colon X \times Y \to \R$ es $\Acal \otimes \Bcal$-medible, entonces la función
+  \begin{align*}
+      f_x \colon Y &\to \R \\
+      y &\mapsto f(x,y)
+  \end{align*}
+  es $\Bcal$-medible, y la función
+  \begin{align*}
+      f^y \colon X &\to \R \\
+      x &\mapsto f(x,y)
+  \end{align*}
+  es $\Acal$-medible.
+\end{lemma}
+
+\begin{theorem}
+  [Tonelli]
+  Sean $(X,\Acal,\mu)$ e $(Y,\Bcal,\nu)$ espacios de medida $\sigma$-finitas y $f \olon X \to Y [0,\oo]$ una función $\Acal \otimes \Bcal$-medible. entonces
+  \begin{enumerate}[(a)]
+    \item $x \mapsto \int_Y f_x \d\nu(y)$ es $\Acal$-medible, $y \mapsto \int_X f_y \d\mu(x)$ es $\Bcal$-medible.
+    \item 
+    \[ \int_{X \times Y} f \d(\mu \otimes \nu)
+    = \int_X \br{\int_Y f_x \d\mu(x)} \d\nu(y)
+    = \int_Y \br{\int_X f^y \d\mu(x)} \d\nu(y). \]
+  \end{enumerate}
+\end{theorem}
 
 \newpage
-\subsection{Continuidad absoluta de medidas y Radón--Nikodyn}
+\subsection{Clases de Dynkin}
+
+\begin{definition}
+  Sea $X$ un conjunto. Decimos que $\Dcal \subseteq \P(X)$ es un \wea{$d$-sistema} si
+  \begin{enumerate}[(a)]
+    \item $X \in \Dcal$.
+    \item $(A,B \in \Dcal \land B \subseteq A) \implies A \setminus B \in \Dcal$.
+    \item $\{A_i\} \subseteq \Dcal$ con $A_i \subseteq A_{i+1}$, entonces $\bigcup_{i\in\N} A_i \in \Dcal$.
+  \end{enumerate} 
+  Se dice \wea{$\pi$-sistema} a una familia de conjuntos cerrada bajo intersecciones finitas.
+\end{definition}
+
+\begin{obs}
+  \
+  \begin{enumerate}[(1)]
+    \item Toda \( \sigma \)-álgebra es $d$-sistema.
+    \item La intersección de $d$-sistemas es $d$-sistema.
+    \item $\P(X)$ es $d$-sistema.
+  \end{enumerate}
+  Luego para cualquier familia de conjuntos, existe un $d$-sistema generado por ella, que es la intersección de todos los $d$-sistemas que la contienen.
+\end{obs}
+
+\begin{example}
+  Los rectángulos son $\pi$-sistemas, pero no son $d$-sistemas.
+\end{example}
+
+\begin{theorem}
+  Sea $X$ conjunto y $\Ccal$ un $\pi$-sistema, entonces la \( \sigma \)-álgebra generada por $\Ccal$ coincide con el $d$-sistema generado por $\Ccal$.
+\end{theorem}
+
+\begin{corollary}
+  Si $\Ccal$ es $\pi$-sistema y $\mu,\nu$ son medidas definidas en $\sigma(\Ccal)$ tales que $\mu(C) = \nu(C)$ para todo $C \in \Ccal$, entonces $\mu = \nu$ en $\sigma(\Ccal)$.
+\end{corollary}
+
+\begin{proposition}
+  Sean $(X,\A,\mu)$ e $(Y,\B,\nu)$ espacios de medida y $E \in \A \otimes \B$. Entonces $x \mapsto \nu(E_x)$ es $\A$-medible e $y \mapsto \mu(E^y)$ es $\B$-medible.
+\end{proposition}
+
+\fecha{Clase 22. Miércoles 27 de Mayo}
+
+\begin{proposition}
+  Sean $(X,\A,\mu)$ e $(Y,\B,\nu)$ espacios de medida y $E \in \A \otimes \B$. Entonces
+  \[ (\mu \otimes \nu)(E) = \int_X \nu(E_x) \d\mu = \int_Y \mu(E^y) \d\nu \]
+\end{proposition}
+
+\begin{theorem}
+  [Tonelli]
+  Sean $(X,\A,\mu)$ e $(Y,\B,\nu)$ espacios de medida $\sigma$-finitos y $f \colon X \times Y \to [0,\oo]$ una función $\A \otimes \B$-medible. Entonces
+  \begin{enumerate}[(a)]
+    \item Las funciones $x \mapsto \int_Y f_x \d\nu$ e $y \mapsto \int_X f^y \d\mu$ son $\mu$-medible y $\nu$-medible respectivamente.
+    \item 
+    \[ \int_{X \times Y} f \d(\mu \otimes \nu) = \int_X \br{\int_Y f_x \d\nu} \d\mu = \int_Y \br{\int_X f^y \d\mu} \d\nu. \]
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  [Fubini]
+  Si $f \colon X \times Y \to [-\oo,\oo]$ es integrable (con respecto a $\mu\otimes\nu$), entonces
+  \begin{enumerate}[(a)]
+    \item $f_x$ es $\nu$-integrable a.e.
+    \item $f^y$ es $\mu$-integrable a.e.
+    \item Si
+    \[ I_f = \begin{cases}
+      \int_Y f_x \d\nu(y), &\text{si $f_x$ es $\nu$-integrable} \\
+      0, &\text{si no}
+    \end{cases} \]
+    \[ J_f = \begin{cases}
+      \int_X f^y \d\mu(x), &\text{si $f^y$ es $\mu$-integrable} \\
+      0, &\text{si no}
+    \end{cases} \]
+    entonces
+    \[ \int_{X \times Y} f \d(\mu \otimes \nu) = \int_X I_f(x) \d\mu(x) = \int_Y J_f(y) \d\nu(y). \]
+  \end{enumerate}
+\end{theorem}
+
+\newpage
+\subsection{Medidas con Signo}
+
+\begin{definition}
+  Dado $(X,\A)$ espacio de medida. Decimos que $\mu \colon \A \to [-\oo,\oo]$ es \wea{medida con signo} si
+  \begin{enumerate}[(i)]
+    \item $\mu(\emptyset) = 0$.
+    \item $\mu\br{\bigcup_{n\in\N} A_n} = \sum_{n\in\N} \mu(A_n)$ con $A_n$ disjuntos
+    \item Si no es finita, solo alcanza uno de los infinitos ($+\oo$ o $-\oo$).
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  Si $\mu$ es una medida usual y $f$ es itnegrable, entonces
+  \[ \nu(A) = \int_A f \d\mu \]
+  define una medida con signo.
+\end{example}
+
+\begin{obs}
+  Si $f = f^+ - f^-$, entonces $\nu(A) = \nu^+(A) - \nu^-(A)$ con
+  \[ \nu^+(A) = \int_A f^+ \d\mu \quad\land\quad \nu^-(A) = \int_A f^- \d\mu. \]
+\end{obs}
+
+\begin{lemma}
+  Sea $(X,\A)$ espacio de medida y $\mu$ medida con signo. Entonces
+  \begin{enumerate}[(1)]
+    \item Si $\{A_n\}_n$ es una familia creciente, entonces
+    \[ \mu\br{\bigcup_{n\in\N} A_n} = \lim_{n\to\oo} \mu(A_n). \]
+    \item Si $\{A_n\}_n$ es una familia decreciente, entonces
+    \[ \mu\br{\bigcap_{n\in\N} A_n} = \lim_{n\to\oo} \mu(A_n). \]
+  \end{enumerate}
+\end{lemma}
+
+\begin{definition}
+  Sea $\mu$ medida con signo. Decimos que $A \in \A$ es \wea{positivo para $\mu$} si
+  \[ \forall E(E \in \A \cap \P(A) \implies \mu(E) \geq 0). \]
+  $A \in \A$ se dice \wea{negativo para $\mu$} si
+  \[ \forall E (E \in \A \cap \P(A) \implies \mu(E) \leq 0). \]
+\end{definition}
+
+\begin{theorem}
+  [Descomposición de Hahn]
+  Si $(X,\A)$ es espacio de medida y $\mu$ es medida con signo, entonces $\exists P,N \subseteq X$ tales que $X = P \cup N$, $P$ es positivo para $\mu$ y $N$ es negativo para $\mu$.
+\end{theorem}
+
+\begin{corollary}
+  [Descomposición de Jordan]
+  Con las condiciones anteriores, existen medidas $\nu^+,\nu^-$ tales que $\mu = \nu^+ - \nu^-$, dadas por
+  \[ \nu^+(A) = \mu(A \cap P) \quad\land\quad \nu^-(A) = \mu(A \cap N). \]
+\end{corollary}
+
+\begin{lemma}
+  Sea $\mu$ medida con signo sobre $(X,\A)$, y sea $A \in \A$ tal que $-\oo < \mu(A) < 0$. Entonces $\exists B \subseteq A$ tal que $B$ es negativo, no vacío y tal que
+  \[ \mu(B) \leq \mu(A) < 0. \]
+\end{lemma}
+
+\newpage
+\subsection{Continuidad absoluta de medidas y Radón--Nikodym}
 %% Falta tipear clases 21 y 22.
-\fecha{Clase 23.}
+\fecha{Clase 23. Lunes 1 de Junio}
 
 \begin{definition}
   Sea $(X,\Acal)$ espacio de medida y $\mu,\nu$ medidas en $(X,\Acal)$. Decimos que $\nu$ es \wea{absolutamente continua con respecto a $\mu$} si
   \[ \forall A \in \Acal (\mu(A) = 0 \implies \nu(A) = 0). \]
-  Se denota $\nu <<\mu$. Si $\nu$ es medida con signo, entonces $\nu$ es \wea{absolutamente continua con respecto a $\mu$} si $\abs\nu << \mu$ (donde $\abs\nu = \nu^+ + \nu^-$ con $\nu^+,\nu^-$ de la descomposición de Jordan).
+  Se denota $\nu \ll\mu$. Si $\nu$ es medida con signo, entonces $\nu$ es \wea{absolutamente continua con respecto a $\mu$} si $\abs\nu \ll \mu$ (donde $\abs\nu = \nu^+ + \nu^-$ con $\nu^+,\nu^-$ de la descomposición de Jordan).
 \end{definition}
 
 \begin{example}
   Sea $f \colon X \to [0,\oo]$ y $f \in \Lcal^1(X,\Acal, \mu)$. Consideramos $\nu$ dada por
   \[ \nu(A) = \int_A f \d\mu. \]
-  Entonces $\nu << \mu$.
+  Entonces $\nu \ll \mu$.
 \end{example}
 
 \begin{lemma}
   Sea $(X,\Acal)$ espacio de medida, $\mu$ una medida y $\nu$ medida finita. Entonces
-  \[ \nu << \mu \iff \forall \e>0, \exists \delta>0, (\mu(A) < \delta \implies \nu(A) < \e). \]
+  \[ \nu \ll \mu \iff \forall \e>0, \exists \delta>0, (\mu(A) < \delta \implies \nu(A) < \e). \]
 \end{lemma}
 
 \begin{theorem}
-  [Radón-Nikodyn]
-  Sea $(X,\Acal)$ espacio de medida y sean $\mu,\nu$ medidas $\sigma$-finitas. Si $\nu << \mu$, entonces existe $g \colon X \to [0,\oo]$ tal que 
+  [Radón-Nikodym]
+  Sea $(X,\Acal)$ espacio de medida y sean $\mu,\nu$ medidas $\sigma$-finitas. Si $\nu \ll \mu$, entonces existe $g \colon X \to [0,\oo]$ tal que 
   \[ \nu(A) = \int_A g \d\mu. \]
   Además, $g$ es única a.e. (salvo conjuntos de medida 0).
 \end{theorem}
@@ -2581,17 +2837,111 @@ La idea de la demostración es:
 \end{proof}
 
 \begin{notation}
-  $g$ se anota como $\ds \frac{\d\nu}{\d\mu}$ y se llama \wea{derivada de Rad+on-Nikodym}.
+  $g$ se anota como $\ds \frac{\d\nu}{\d\mu}$ y se llama \wea{derivada de Radón-Nikodym}.
 \end{notation}
 
 \begin{obs}
   \ \begin{itemize}
     \item Si $\mu$ es medida, entonces $\ds \frac{\d\mu}{\d\mu} = 1$.
-    \item Si $\mu$ es medida con signo, entonces $\mu << \abs \mu$ y $\ds \abs{\frac{\d\mu}{\d\abs\mu}} = 1$, donde $\abs\mu(A) = \mu_+(A) + \mu_-(A)$.
+    \item Si $\mu$ es medida con signo, entonces $\mu \ll \abs \mu$ y $\ds \abs{\frac{\d\mu}{\d\abs\mu}} = 1$, donde $\abs\mu(A) = \mu_+(A) + \mu_-(A)$.
   \end{itemize}
 \end{obs}
 
-%\fecha{Clase 24.}
+\newpage
+\fecha{Clase 24. Miércoles 3 de Junio}
+\subsection{Medidas singulares}
+
+\begin{definition}
+  Sea $(X,\A)$ espacio de medida y $\mu$ medida en $(X,\A)$. Decimos que $\mu$ \wea{está concentrada en $A$} si $\mu(A^c) = 0$. Si $\nu$ es otra medida, decimos que $\nu$ es \wea{singular con respecto a $\mu$} si $\mu$ está concentrada en $A$ y $\nu$ está concentrada en $A^c$.
+  En el caso de medidas con signo, usamos estas definiciones para $\abs\mu$ y $\abs\nu$.
+\end{definition}
+
+\begin{example}
+  En la descomposición de Hahn de una medida con signo, tenemos que $\mu_+$ y $\mu_-$ son mútuamente singulares.
+\end{example}
+
+\begin{notation}
+  Si $\mu$ y $\nu$ son singulares, entonces anotamos $\mu \perp \nu$.
+\end{notation}
+
+\begin{theorem}
+  Si $(X,\A)$ es un espacio de medida y $\mu$, $\nu$ son medidas con signo y finitas (o $\nu$ medida positiva $\sigma$-finita), entonces $\nu = \nu_s + \nu_a$ con $\nu_s \perp \mu$ y $\nu_a \ll \mu$.
+\end{theorem}
+\newpage
+\subsection{Funciones de Variación Acotada}
+
+\subsubsection{Preliminares}
+
+Si $F \colon \R \to [0,\oo)$ es acotada y no decreciente, es continua por la derecha y $\lim_{x \to -\oo} F(x) = 0$, podemos definir
+\[ \mu_F(-\oo,b] = F(b). \]
+
+\begin{exercise}
+  $\mu_F$ define una medida boreliana finita.
+\end{exercise}
+
+\begin{lemma}
+  Si $\mu$ es una medida boreliana finita en $\R$,
+  \[ F_\mu(b) = \mu(-\oo,b] \]
+  entonces
+  \begin{itemize}
+    \item $\lim_{b\to-\oo} F_\mu(b) = 0$.
+    \item $F_\mu$ es no decreciente.
+    \item $F_\mu$ es acotada ($\mu$ es finita).
+    \item $F_\mu$ es continua por la derecha.
+  \end{itemize}
+  Es decir, hay una correspondencia entre medidas borelianas finitas y funciones no decrecientes, continuas por la derecha, acotadas y que convergen a 0 cuando $x \to -\oo$.
+\end{lemma}
+
+\begin{definition}
+  Dada $F \colon D \subseteq \R \to \R$ y $[a,b] \subseteq \D$,
+  \[ V_F[a,b] = \sup\set{\sum_{i=1}^{n-1} \abs{F(t_{i+1}) - F(t_i)} : a \leq t_0 < t_1 < \dots < t_n \leq b}. \]
+  Decimos que $F$ es \wea{de variación acotada en $[a,b]$ si $V_F[a,b] < \oo$.}
+\end{definition}
+
+La definición se puede extender a intervalos abiertos o de la forma $(-\oo,b]$, $[b,\oo)$ o $(-\oo,\oo)$.
+
+\begin{theorem}
+  Hay una correspondencia entre medidas con signo finitas y las funciones de variació acotada en $\R$, $F(-\oo) = 0$, continuas por la derecha y 
+  \[ F_\mu(b) = \mu(-\oo,b]. \]
+\end{theorem}
+
+\begin{proposition}
+  Si $F$ es de variación acotada, entonces
+  \begin{itemize}
+    \item $F$ es acotada
+    \item $V_F(-\oo,b] = V_F(-\oo,a] + V_F[a,b]$.
+    \item $\ds V_F[a,b] = \lim_{x\to a^+} V_F[x,b]$.
+  \end{itemize}
+\end{proposition}
+
+\begin{definition}
+  Escribimos
+  \[ V_F(x) = V_F(-\oo,x]. \]
+\end{definition}
+
+\begin{lemma}
+  Si $F$ es de variación acotada (abreviado como \wea{BPV}), entonces
+  \begin{enumerate}[(a)]
+    \item $V_F$ es acotada y no decreciente.
+    \item $V_F$ se anula en $-\oo$.
+    \item Si $F$ es continua por la derecha, entonces $V_F$ es continua por la derecha.
+  \end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+  Si $F$ es de variación acotada, entonces $\exists F_1,F_2$ no decrecientes tales que
+  \[ F = F_1 - F_2. \]
+\end{lemma}
+
+\begin{definition}
+  $F$ se dice \wea{absolutamente continua} si $\forall \e>0$ , $\exists \delta>0$ tal que, si $\{(s_i,t_i)\}_{i\in\N}$ es una familia de intervalos disjuntos con $\sum_{i \in \N} (t_i - s_i) < \delta$, entonces $\sum_{i\in\N} \abs{F(t_i) - F(s_i)} < \e$.
+\end{definition}
+
+\begin{theorem}
+  Las funciones de variación acotada, absolutamente continuas y tal que se anulen en $-\oo$ son de la forma
+  \[ F(x) = \int_{-\oo}^x f(t) \d t. \]
+\end{theorem}
+
 %\fecha{Clase 25.}
 %\fecha{Clase 26.}
 %\fecha{Clase 27.}
