@@ -134,6 +134,7 @@
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\im}{\mathrm{im}\,}
 \newcommand{\dist}{\mathrm{dist}}
+\newcommand{\diam}{\mathrm{diam}}
 
 \newcommand{\normal}{\unlhd}
 
@@ -2941,7 +2942,45 @@ La definición se puede extender a intervalos abiertos o de la forma $(-\oo,b]$,
   \[ F(x) = \int_{-\oo}^x f(t) \d t. \]
 \end{theorem}
 
-%\fecha{Clase 25.}
+\fecha{Clase 25. Lunes 8 de Junio}
+
+\begin{definition}
+  Sea $(X,d)$ un espacio métrico. Definimos para $S \subseteq X$:
+  \begin{itemize}
+    \item $\diam(S) = \sup\{d(x,y) : x,t \in S\}$.
+    \item $\hat S = \{x \in X : \dist(x,S) \leq 2 \diam(S)\}$.
+  \end{itemize}
+\end{definition}
+
+\begin{obs}
+  Si $S = B_r(x_0)$, entonces $\hat S = B_{5r}(x_0)$.
+\end{obs}
+
+\begin{definition}
+  Decimos que $F \subseteq \P(X)$ \wea{cubre a $S$} si $S \subseteq \bigcup_{C \in F} C$.
+\end{definition}
+
+\begin{definition}
+  Decimos que $\Fcal$ \wea{cubre a $S$ finamente} si $\forall \e>0$
+  \[ S \subseteq \bigcup \{B \in F : \diam(B) < \e\}. \]
+  Equivalentemente, $\forall x \in S$, $\exists B \in \Fcal$ tal que $\diam(B) < \e$ y $x \in B$.
+  Este tipo de cubrimiento se llaman \wea{cubrimiento de Vitali}.
+\end{definition}
+
+\begin{theorem}
+  Sea $\Fcal$ una colección de conjuntos cerrados tal que los diámetros son positivos y acotados superiormente.
+  Suponga que $\Fcal$ satisface que no hay infinitos conjuntos disjuntos con diametros estrictamente acotados por abajo.
+  Entonces existe $\{B_i\}_{i\in I} \subseteq \Fcal$ tal que $B_i$ son disjuntos entre si, finitos o numerables y $\forall B \in \Fcal$, $\exists k$ tal que $B \cap B_k \neq \emptyset$, y si $\Fcal$ cubre a $S$ finamente (o es un cubrimiento de Vitali) entonces $\forall n \in \N$
+  \[ S \subseteq \bigcup_{k \leq n} B_k \cup \bigcup_{k \geq n} \hat B_k. \]
+\end{theorem}
+
+\begin{theorem}
+  [Vitali]
+  Supongamos que $\Fcal = \{B_i\}_i$ es una familia de bolas cerradas disjuntas que conforman un cubrimiento de Vitali de $S$. Entonces
+  \[ S s\setminus \bigcup_{i \leq n} B_i \subseteq \bigcup_{i \geq n} \hat B_i, \quad \forall n \in \N \]
+  y $\lam\br{S \setminus \bigcup_i B_i} = 0$.
+\end{theorem}
+
 %\fecha{Clase 26.}
 %\fecha{Clase 27.}
 %\fecha{Clase 28.}
