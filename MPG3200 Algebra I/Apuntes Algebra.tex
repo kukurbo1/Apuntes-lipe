@@ -1,20 +1,13 @@
 \documentclass{article}
 %packages
 \usepackage{fullpage}
-\usepackage{xspace}
-\usepackage{graphicx,color}
 \usepackage{hyperref}
-\usepackage{graphicx}
 \usepackage[dvipsnames]{xcolor}
-\usepackage{amsmath, amsthm, amscd, amsfonts, amssymb}
-\usepackage{graphicx}
-\usepackage{stmaryrd}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{stmaryrd} %% cotniene triangleleqslant para subgrupos normales.
 \usepackage{quiver}
-\usepackage{float}
 \usepackage{mathtools}
-\usepackage{mathrsfs}
-\usepackage{multicol}
-\usepackage{tikz-cd}
+\usepackage{mathrsfs} %% contiene mathscr.
 \usepackage[shortlabels]{enumitem}
 \usepackage{stackrel}
 \usepackage{cancel}
@@ -3446,7 +3439,74 @@ Ahora, dado $R$ un DI, queremos encontrar algún cuerpo $K$ tal que $R \embed K$
   $\Z\cor{\frac{1+\sqrt{-19}}{2}}$ es DIP, pero no es DE.
 \end{theorem}
 
-%\fecha{Clase 23.}
+\newpage
+\fecha{Clase 23. Lunes 8 de Junio}
+\subsection{Anillos de Polinomios}
+
+Motivación: Criterio de la raíz racional.
+
+Sea $h = \sum_{i=1}^n a_i x^i \in \Z[x]$, con $a_n,a_0 \neq 0$.
+Si $p/q \in \Q$ es tal que $h(p/q) = 0$, con $\gcd(p,q) = 1$, entonces $p \mid a_0 \ \land \ q \mid a_n$.
+
+Esto nos da un algoritmo en el que dado $h \in \Z[x]$ se encuentran todas sus raíces racionales.
+
+¿Existe un algoritmo que en entrada $h \in \Z[x_1,\dots,x_5]$ decida si admite una raíz racional? Este es un problema abierto. Este es el décimo problema de Hilbert.
+
+Vamos a probar algo más general que el criterio de la raíz racional:
+
+\begin{definition}
+  Sea $A$ un anillo conmutativo e $I \subset A$ un ideal. Denotamos por $IA[x]$ el ideal inducido por $I$ en $A[x]$:
+  \[ IA[x] = \set{\sum_{i=0}^n a_i x^i : a_i \in I}. \]
+\end{definition}
+
+\begin{obs}
+  Si consideramos el homomorfismo proyección $\pi \colon A \to A/I$, este se extiende a $\bar\pi \olon A[x] \to (A/I)[x]$ mediante
+  \[ \bar\pi\br{\sum_{i=0}^n a_i x^i} = \sum_{i=0}^n \pi(a_i)x^i. \]
+  Como $\pi$ es sobreyectiva, tenemos que $\bar\pi$ también es sobreyectiva. Notemos que
+  \begin{align*}
+      \sum_{i=0}^n a_i x^i \in \ker\bar\pi
+      &\iff \bar\pi\br{\sum_{i=0}^n a_i x^i} = 0 \\
+      &\iff \sum_{i=0}^n \pi(a_i) x^i = 0 \\
+      &\iff \pi(a_i) = 0, \quad \forall i \\
+      &\iff a_i \in I, \quad \forall i \\
+      &\iff \sum_{i=0}^n a_i x^i \in IA[x].
+  \end{align*}
+  Por lo tanto $\ker\bar\pi = IA[x]$. Luego por el primer teorema de isomorfismo
+  \[ \frac{A[x]}{IA[x]} \simeq \br{\frac{A}{I}}[x]. \]
+\end{obs}
+
+\begin{example}
+  Sea $A$ anillo conmutativo y $a \in A$. Si $a$ es primo en $A$, entonces $a$ es primo en $A[x]$.
+\end{example}
+\begin{proof}
+  \begin{align*}
+    \text{$a$ es primo en $A$}
+    \iff &\text{$(a)$ es ideal primo de $A$} \\
+    \iff &\text{$A/(a)$ es DI} \\
+    \implies &\frac{A}{(a)}[x] \text{ es DI} \\
+    \implies & \frac{A[x]}{(a)A[x]} \text{ es DI} \\
+    \implies & \text{$(a)A[x]$ es ideal primo} \\
+    \implies &\text{$a$ es primo en $A[x]$}
+  \end{align*}
+\end{proof}
+
+\begin{definition}
+  Sea $A$ un DFU. Diremos que $f \in A[x]$ es \wea{primitivo} si el MCD de sus coeficientes es una unidad (i.e.: 1 es un MCD de ellos).
+\end{definition}
+
+\begin{lemma}
+  [Gauß]
+  Sea $A$ un DFU y sea $F = \Frac(A)$. Supongamos que $\deg{f} \geq 1$. Entonces $f$ es irreducible en $A[x]$ si y solo si $f$ es primitivo en $A$ y $f$ es irreducible en $F[x]$.
+\end{lemma}
+
+\begin{lemma}
+  Sea $A$ un DFU y $F = \Frac(A)$. Sea $f \in A[x]$ con $\deg{f} \geq 1$. Si $f$ es reducible como elemento de $F[x]$, entonces $f$ es reducible como elemento de $A[x]$.
+\end{lemma}
+
+\begin{theorem}
+  Si $A$ es DFU, entonces $A[x]$ es DFU.
+\end{theorem}
+
 %\fecha{Clase 24.}
 %\fecha{Clase 25.}
 %\fecha{Clase 26.}
