@@ -12,6 +12,7 @@
 \usepackage{stackrel}
 \usepackage{cancel}
 \usepackage[framemethod = TikZ]{mdframed}
+\usepackage{array}
 
 %theorems
 \newtheorem{theorem}{Teorema}[subsection]
@@ -3507,10 +3508,222 @@ Vamos a probar algo más general que el criterio de la raíz racional:
   Si $A$ es DFU, entonces $A[x]$ es DFU.
 \end{theorem}
 
+\fecha{Clase 24. Miércoles 10 de Junio}
 
+\subsection{Criterio de Eisenstein}
 
-%\fecha{Clase 24.}
-%\fecha{Clase 25.}
+Dado $p$ primo, denotamos $\mathrm{GF}(p) = \Z_p$ el cuerpo de $p$ elementos. Existe una proyección
+\[ \psi_p \colon \Z[x] \to \mathrm{GF}(p)[x] \]
+dada por
+\[ \psi_p\br{\sum_{i=1}^n a_i x^i} = \sum_{i=1}^n [a_i]_p x^i. \]
+
+\begin{lemma}
+  Sea $p$ primo y sea $\ds f = \sum_{i=1}^n a_i x^i \in \Z[x]$ tal que $a_n \not\equiv 0 \mod{p}$. Si $f$ es irreducible en $\mathrm{GF}(p)[x]$, entonces $f$ es irreducible en $\Q[x]$.
+\end{lemma}
+
+\begin{theorem}
+  [Criterio de Eisenstein]
+  Sea $\ds f = \sum_{i=1}^n a_i x^i \in \Z[x]$ y $p$ primo tal que
+  \begin{enumerate}[(i)]
+    \item $a_n \not\equiv 0 \mod{p}$,
+    \item $p \mid a_{n-1}, \dots, p \mid a_0$,
+    \item $a_0 \not\equiv 0 \mod{p^2}$,
+  \end{enumerate}
+  entonces $f$ es irreducible en $\Q[x]$.
+\end{theorem}
+
+De forma general, se tiene lo siguiente:
+\begin{theorem}
+  Sea $R$ un DIP, y sea $q = \sum_{i=0}^n a_i x^i \in R[x]$. Sea $\mathfrak{p}$ ideal primo tal que
+  \begin{enumerate}[(i)]
+    \item $a_n \notin \mathfrak p$,
+    \item $a_i \in \mathfrak{p}, \forall i \neq n$,
+    \item $a_0 \notin \mathfrak{p}^2$.
+  \end{enumerate}
+  entonces $q$ no es producto de dos polinomios no constantes en $R[x]$.
+  Si además $R$ es DFU y $q$ es primitivo, entonces $q$ es irreducible en $R[x]$.
+\end{theorem}
+
+\subsection{Anillos Noetherianos y Artinianos}
+
+\begin{definition}
+  $R$ se dice \wea{Noetheriano} si toda cadena ascendente de ideales se estabiliza, y se dice \wea{Artiniano} si toda cadena descendente se estabiliza.
+\end{definition}
+
+\begin{obs}
+  Si $R$ es Artiniano, DI y conmutativo, entonces es un cuerpo.
+\end{obs}
+
+\begin{theorem}
+  [Wedderburn--Artin]
+  Todo anillo simple Artiniano es isomorfo a un anillo de matrices con coeficientes en un anillo de división.
+\end{theorem}
+
+\begin{theorem}
+  [Base de Hilbert]
+  Si $R$ es Noetheriano, entonces $R[x]$ es Noetheriano.
+\end{theorem}
+
+\newpage
+\section{Cuerpos}
+\fecha{Clase 25. Lunes 15 de Junio}
+
+\begin{definition}
+  Dados dos cuerpos $K$ y $F$, decimos que $K$ es \wea{extensión de $F$} si $F$ es subcuerpo de $K$.\footnote{Todavía no hablaremos de extensiones modulo isomorfismo.}
+  Se denota $K/F$.
+\end{definition}
+
+\begin{obs}
+  Para toda extensión $K/F$ se tiene que $K$ es un $F$-espacio vectorial.
+\end{obs}
+
+\begin{definition}
+  El \wea{grado} de una extensión $K/F$ es la dimensión de $K$ como $F$-espacio vectorial:
+  \[ [K : F] = \dim_F(K). \]
+\end{definition}
+
+\begin{example}
+  $\C/\R$, con $[\C : \R] = 2$.
+\end{example}
+
+\begin{example}
+  $\R/\Q$ con $[\R : \Q] = \abs\R$.
+\end{example}
+
+\begin{definition}
+  Sea $K/F$ extensión de cuerpos. Diremos que $\a \in K$ es \wea{algebraico sobre $F$} si existe $p \in F[x]$ tal que $p(\a) = 0$.
+  Si $\a$ no es algebraico, se dice \wea{trascendente sobre $F$}.
+\end{definition}
+
+\begin{obs}
+  Si $\a$ es algebraico, entonces existe un polinomio mónico que lo anula.
+\end{obs}
+
+\begin{obs}
+  Si $\a \in K$ es algebraico sobre $F$, existe un único polinomio mónico $p_\a = \min(\a,F) \in F[x]$ de grado mínimo tal que $p_\a(\a) = 0$. Este polinomio de denomina \wea{polinomio minimal de $\a$ sobre $F$}.
+\end{obs}
+
+\begin{exercise}
+  Pruebe que $\a \in K$ es algebraico sobre $F$ si y solo si el $F$-espacio vectorial generado por $\{1,\a,\a^2, \dots\}$ no es linealmente independiente sobre $F$.
+\end{exercise}
+
+\begin{obs}
+  $\a \in K$ es algebraico sobre $F$ si y solo si $\exists p_\a \in F[x]$ tal que $p_\a(\a) = 0$.
+  Sea $\ds p_\a = \sum_{i=0}^n b_i x^i$ con $b_i \in F$, $b_n = 1$. Evaluando en $\a$ obtenemos
+  \[ \sum_{i=0}^n b_i \a^i = 0 \iff \a^{n+k} = - \sum_{i=0}^{n-1} b_i \a^{i+k}. \]
+  Luego $\dim_F \gen{\{\a^i : i \in \N\}} = \deg(p_\a)$.
+\end{obs}
+
+\begin{obs}
+  En términos de anillos, si tenemos una extensión de cuerpos $K/F$, consideramos el homomorfismo de evaluación en $\a \in K$
+  \begin{align*}
+      \varphi_\a \colon F[x] &\to K \\
+      p &\mapsto p(\a).
+  \end{align*}
+  Tenemos que $\a$ es algebraico sobre $F$ si y solo si $\ker\varphi_\a \neq \{0\}$. Como $F$ es cuerpo, entonces $F[x]$ es DE, y entonces es DIP. Por lo tanto existe $p \in F[x]$ tal que $\ker\vphi_\a = (p)$. Módulo unidades, tenemos que $p = \min(\a,F)$.
+\end{obs}
+
+\begin{obs}
+  Sea $\a$ algebraico en $K/F$. Entonces $p_\a = \min(\a,F)$ es irreducible.
+\end{obs}
+\begin{proof}
+  Si $p_\a = qq'$ con $q,q' \in F[x]$, entonces $0 = p_\a(\a) = q(\a) q'(\a)$. Como $F$ es cuerpo, tenemos que $q(\a) = 0 \ \lor \ q'(\a) = 0$. Sin pérdida de generalidad, $q(\a) = 0$. Como $p_\a$ tiene grado minimal, tenemos que $\deg p_\a = \deg q$, y entonces $\deg q' = 0$. Por lo tanto $q' \in (F[x])^\times$. Luego $p_\a$ es irreducible.
+\end{proof}
+
+\begin{obs}
+  Sea $F$ cuerpo y $p \in F[x]$ con $2 \leq \deg p \leq 3$. $p$ es irreducible si y solo si $p$ no tiene raíces en $F$.
+\end{obs}
+
+\begin{obs}
+  Esto es falso si $\deg p \geq 4$. Por ejemplo, $p = x^4 + 1 \in \R[x]$. Este polinomio es reducible en $\R[x]$:
+  \[ x^4 + 1 = (x^2 + \sqrt{2} x + 1)(x^2 - \sqrt{2} x + 1). \]
+\end{obs}
+
+\begin{definition}
+  Sea $K$ cuerpo y $A \subset K$ subanillo y $S \subset K$ conjunto. El \wea{subanillo de $K$ generado por $A$ y $S$} es
+  \[ A[S] = \bigcap_{\substack{A \cup S \subset R \subset K \\ \text{anillo}}} R. \]
+  El \wea{subcuerpo de $K$ generado por $A$ y $S$} es
+  \[ A(S) = \bigcap_{\substack{A \cup S \subset L \subset K \\ \text{cuerpo}}} L. \]
+\end{definition}
+
+\begin{proposition}
+  $$A[S] = \set{\sum_{i=1}^n a_i s_{1,i} \dots s_{k_i,i} : k_i, n \in \N, a_i \in A, s_{j,i} \in S}.$$
+\end{proposition}
+
+\begin{definition}
+  Si $S = \{b\}$, escribimos
+  \[ A[\{b\}] = A[b] = \set{\sum_{i=1}^n a_i b^i : n \in \N, a_i \in A}. \]
+\end{definition}
+
+\begin{obs}
+  $A(S) = A[S]$.
+\end{obs}
+
+\begin{example}
+  $\Q[i] = \{a + bi : a,b \in \Q\} = \Q(i)$.
+\end{example}
+
+\begin{example}
+  $\Q[i\sqrt{5}] = \{a + ib \sqrt{5} : a,b \in \Q\} = \Q(\sqrt{5})$.
+\end{example}
+
+\begin{proposition}
+  Sea $\a \in K$ algebraico sobre $F$, entonces $F[\a]$ es cuerpo y $[F[\a] : F] = \deg(\min(\a,F))$.
+\end{proposition}
+\begin{proof}
+  Considere $\psi_\a \colon F[x] \to K$ el homomorfismo de evaluación en $\a$. Luego
+  \[ F[\a] = \psi_\a(F[x]) \simeq \frac{F[x]}{\ker\psi_\a} = \frac{F[x]}{(p_\a)} \]
+  donde $p_\a = \min(\a,F)$.
+  Si $\exists I$ ideal tal que $(p_\a) \subsetneq I \subsetneq F[x]$, entonces $I = (q)$ pues $F[x]$ es DIP. Luego $q \mid p_\a = p_\a = q \cdot t$ con $\deg t \geq 1$. Pero $p_\a$ es irreducible. \(\to\gets\)
+
+  Por lo tanto $(p_\a)$ es maximal, y entonces $F[x]/(p_\a) \simeq F[\a]$ es cuerpo.
+
+  Ejercicio: grado de la extensión.
+\end{proof}
+
+\begin{obs}
+  En general, si $F$ es cuerpo y $p \in F[x]$ es irreducible, entonces $F[x]/(p)$ es cuerpo.
+\end{obs}
+
+\begin{example}
+  $\C \simeq \R[x]/(x^2+1)$.
+\end{example}
+
+\begin{example}
+  Sea $F = \F_2 = \mathrm{GF}(2)$ y $p = x^2 + x + 1$. Este polinomio es irreducible. Luego $K = F[x]/(x^+ x + 1)$ es cuerpo. Tenemos que $[K:F] = 2$, y entonces $\abs K = 4$. Notemos que $(\F_2,+)$ es un grupo abeliano de característica 2, por lo que $(\F_2,+) \simeq \Z_2 \times \Z_2$. Además, $(\F_2 \setminus \{0\},\cdot)$ es un cuerpo de orden 3, por lo que es isomorfo a $\Z_3$.
+\end{example}
+
+\begin{exercise}
+  Construya $\forall n \geq 1$, un cuerpo con $2^n$ elementos y $3^n$ elementos. Equivalentemente, encuentre en $\F_2[x]$ y $\F_3[x]$ un polinomio irreducible de grado $n$.
+\end{exercise}
+
+\begin{definition}
+  Una extensión $K/F$ se dice \wea{algebraica} si todo $\a \in K$ es algebraico.
+  Un cuerpo $K$ se dice \wea{algebraicamente cerrado} si todo $p \in K[x]$ admite una raíz en $K$.
+\end{definition}
+
+\begin{definition}
+  El cuerpo de los números algebraicos es
+  \[ \bar\Q = \{\a \in \C : \a \text{ es algebraico sobre } \Q\}. \]
+\end{definition}
+
+\begin{theorem}
+  $\bar\Q$ es cuerpo y es algebraicamente cerrado.
+\end{theorem}
+
+\begin{obs}
+  $\bar\Q$ es numerable.
+\end{obs}
+
+\begin{lemma}
+  Si $K/F$ y $[K:F] < \oo$, entonces $K/F$ es algebraica.
+\end{lemma}
+
+\begin{lemma}
+  Si $F \leq K \leq L$ son extensiones finitas, entonces
+  \[ [L:F] = [L:K][K:F]. \]
+\end{lemma}
+
 %\fecha{Clase 26.}
 %\fecha{Clase 27.}
 %\fecha{Clase 28.}
