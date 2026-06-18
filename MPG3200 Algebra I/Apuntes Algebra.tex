@@ -10,7 +10,6 @@
 \usepackage{mathrsfs} %% contiene mathscr.
 \usepackage[shortlabels]{enumitem}
 \usepackage{stackrel}
-\usepackage{cancel}
 \usepackage[framemethod = TikZ]{mdframed}
 \usepackage{array}
 
@@ -3789,7 +3788,90 @@ Si $g,f \colon \N \to \C$ son tales que
 entonces 
 \[ f(n) = \sum_{d \mid n} \mu(d) g\br{\frac{n}{d}}. \]
 
-%\fecha{Clase 26.}
+\fecha{Clase 26. Miércoles 17 de Junio}
+
+\begin{definition}
+  Sea $K/F$ una extensión de cuerpos. Decimos que es \wea{trascendente} si no es algebraica.
+\end{definition}
+
+\begin{example}
+  $\C/\Q$ es una extensión trascendente.
+\end{example}
+
+\begin{theorem}
+  Sea $\a \in \C$ algebraico sobre $\Q$ de grado $n$. $\exists C>0$ tal que
+  \[ \abs{\a - \frac{p}{q}} > \frac{C}{q^n} \]
+  para todo $p/q \in \Q$ con $q>0$ y $\gcd(p,q) = 1$.
+\end{theorem}
+\begin{proof}
+  Supongamos que $\a \in \R$ es algebraico y $f = \min(\a,\Q)$. Por el teorema del valor medio, si tomamos $p/q \in \Q$ reducido con $p/q \neq \a$, entonces
+  \[ - f \br{\frac pq} = f(\a) - f \br{\frac pq} = \br{\a - \frac pq} f'(\xi) \]
+  para algún $\xi \in (p/q, \a)$.
+  Supongamos que $\abs{\a - \frac pq} < 1$, entonces $\abs\xi \leq 1 + \abs\a$. Notemos que $\exists C(\a)>0$ tal que $\forall \zeta \in (p/q,\a)$,
+  \[ \abs{f'(\zeta)} \leq C(\a). \]
+  Luego
+  \begin{align*}
+      \abs{\a - \frac pq} \c \abs{f'(\xi)} &= \abs{f\br{\frac pq}} \\
+      \implies \abs{\a - \frac pq} &> \frac{1}{C(\a)} \cdot \abs{f\br{\frac pq}} \\
+      \implies \abs{\a - \frac pq} &\geq C \abs{f\br{\frac pq}} \geq \frac{C}{q^n}.
+  \end{align*}
+  Como $f$ es irreducible, entonces $f(p/q) \neq 0$. Luego $\abs{q^n f(p/q)} \geq 1$.
+\end{proof}
+
+\newpage
+\begin{corollary}
+  Sea $\ds L = \sum_{n\geq 0} 10^{-n!}$. Entonces $L$ es trascendente.
+\end{corollary}
+\begin{proof}
+  Para $j \in \N$, defino $\ds p_j = 10^{j!} \sum_{n \leq j} 10^{-n!} \in \Z$. Definimos $q_j = 10^{j!} \in \Z$. Luego
+  \begin{align*}
+      \abs{L - \frac{p_j}{q_j}} &= \sum_{n \geq j+1} 10^{-n!} \\
+      &< 10^{-(j+1)!} \br{1 + \frac{1}{10} + \frac{1}{100} + \dots + \frac{1}{10^n}} \\
+      &= \frac{10}{9} \cdot 10^{-(j+1)!} \\
+      &= \frac{10}{9} q^{-(j+1)} \\
+      &< \frac{10}{9} q_j^{-j}. \quad \to\gets
+  \end{align*}
+\end{proof}
+
+\begin{theorem}
+  $e$ es trascendente.
+\end{theorem}
+\begin{proof}
+  Baker, \emph{Transcendental Number Theory}.
+\end{proof}
+
+\begin{theorem}
+  [Lindemann--Weierstrass]
+  Sean $\a_1, \dots, \a_n$ números algebraicos distintos, y sean $b_1, \dots, b_n$ algebraicos no nulos. Entonces
+  \[ \sum_{i=1}^n b_i e^{\a_i} \neq 0. \]
+\end{theorem}
+
+\begin{definition}
+  Sea $K/F$ una extensión. Decimos que $\gamma_1, \dots, \gamma_n \in K$ son \wea{algebraicamente independientes sobre $F$} si $\forall p \in F[x_1,\dots,x_n]$ no nulo se cumple que $p(\gamma_1,\dots,\gamma_n) \neq 0$.
+\end{definition}
+
+\begin{theorem}
+  [Lindemann--Weierstrass v.2]
+  Si $\a_1,\dots,\a_n$ son algebraicos y algebraicamente independientes sobre $\Q$, entonces $e^{\a_1}, \dots, e^{\a_n}$ son algebraicamente independientes.
+\end{theorem}
+
+\begin{corollary}
+  $\pi$ es trascendente.
+\end{corollary}
+\begin{proof}
+  $e^{i\pi} + e^0 = 0$. Luego $i\pi$ no es algebraico, y entonces $\pi$ es trascendente.
+\end{proof}
+
+\begin{definition}
+  $f \in K[x_1,\dots,x_n]$ se dice \wea{simétrico} si es invariante por permutación de variables. i.e.: si consideramos la acción $S_n \acts K[x_1,\dots,x_n]$ dada por
+  \[ \sigma \cdot f(x_1,\dots,x_n) = f(x_{\sigma(1)},\dots, x_{\sigma(n)}) \]
+  entonces $f$ es simétrico si y solo si $\sigma \cdot f = f$ para todo $\sigma \in S_n$.
+\end{definition}
+
+\begin{example}
+  $x_1^2 + x_2^2, \quad x_1x_2x_3,\quad x_1x_2 + x_1 x_3 + x_2 x_3$.
+\end{example}
+
 %\fecha{Clase 27.}
 %\fecha{Clase 28.}
 %\fecha{Clase 29.}
