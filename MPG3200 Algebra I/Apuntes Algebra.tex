@@ -3872,9 +3872,108 @@ entonces
   $x_1^2 + x_2^2, \quad x_1x_2x_3,\quad x_1x_2 + x_1 x_3 + x_2 x_3$.
 \end{example}
 
-%\fecha{Clase 27.}
-%\fecha{Clase 28.}
-%\fecha{Clase 29.}
+\fecha{Clase 27. Lunes 22 de Junio}
+
+Consideremos los siguientes problemas geométricos clásicos:
+\begin{itemize}
+  \item Construir un cubo con el doble del volumen de un cubo original.
+  \item Dado un círculo, construir un cuadrado de misma área.
+  \item Dado un ángulo, trisectarlo.
+\end{itemize}
+
+\begin{definition}
+  Decimos que $(x,y) \in \R^2$ es \wea{dibujable} si a partir de $(0,0)$, $(1,0)$ y las reglas:
+  \begin{enumerate}[(i)]
+    \item $(0,0)$ y $(1,0)$ son dibujables,
+    \item Dados 2 puntos, trazar una recta,
+    \item Dados 2 puntos dibujables $p,q$, trazar el círculo de centro $p$ y radio $\norm{q-p}_2$,
+    \item Usar los puntos de intersección de rectas y círculos trazados
+  \end{enumerate}
+  se puede obtener $(x,y)$.
+\end{definition}
+
+\begin{definition}
+  Decimos que $z \in \R$ es \wea{constructible} si existe $p \in \R^2$ dibujable tal que $\norm{p}_2 = z$. Denotamos por $\Ccal$ el conjunto de los números constructibles.
+\end{definition}
+
+\begin{theorem}
+  $\Ccal$ es subcuerpo de $\R$.
+\end{theorem}
+
+\begin{corollary}
+  $\Q \subsetneq \Ccal$.
+\end{corollary}
+
+\begin{lemma}
+  $\a \in \Ccal \implies \sqrt\a \in \Ccal$.
+\end{lemma}
+
+\begin{definition}
+  Sea $K \subset \R$ cuerpo. Decimos que una recta $L \subset \R^2$ está \wea{definida en $K$} si contiene 2 puntos en $K^2$. Una circunferencia $C$ está \wea{definida en $K$} si su centro y radio pertenecen a $K^2$.
+\end{definition}
+
+\begin{proposition}
+  Si $L$ es una recta definida sobre $K$, entonces $\exists a,b,c \in K$ tales que
+  \[ L = \{(x,y) \in \R^2 : ax+by+c=0\}. \]
+  Si $C$ es una circunferencia definida sobre $K$, entonces $\exists a,b,c \in K$ tales que
+  \[ C = \{(x,y) \in \R^2 : x^2 + y^2 + ax + by + c = 0\}. \]
+\end{proposition}
+
+\begin{lemma}
+  Sea $K \subset \Ccal$ subcuerpo. Si $\xi \in \Ccal$ se obtiene intersectando rectas y circunferencias sobre $K$, entonces existe $\a \in K$ tal que $\xi \in K[\sqrt\a]$.
+\end{lemma}
+
+\begin{theorem}
+  $\a \in \R$ es constructible si y solo si existe una secuencia finita de cuerpos
+  \[ \Q = F_0 \subset F_1 \subset F_2 \subset \dots \subset F_k \]
+  tal que $\a \in F_k$ y $[F_j : F_{j-1}] = 2$.
+\end{theorem}
+
+\begin{corollary}
+  Si $\a \in \Ccal$, entonces $\exists k$ tal que $[\Q(\a) : \Q] = 2^k$.
+\end{corollary}
+
+\begin{proposition}
+  $\sqrt[3]{2} \notin \Ccal$.
+\end{proposition}
+\begin{proof}
+  $[\Q(\sqrt[3]{2}):\Q] = 3 \neq 2^k$ para $k$ entero.
+\end{proof}
+
+\begin{proposition}
+  $\sqrt\pi \notin \Ccal$.
+\end{proposition}
+\begin{proof}
+  Si $\sqrt\pi \in \Ccal$, entonces $[\Q(\pi) : \Q] < \oo$. \(\to\gets\)
+\end{proof}
+
+Para hablar de trisectar el ángulo, hablamos de ángulos constructibles.
+
+\begin{definition}
+  Decimos que $\a \in [0,2\pi]$ es un \wea{ángulo construcible} si $\exists r >0$ tal que $(r \cos\a, r \sin\a)$ es dibujable.
+\end{definition}
+
+\begin{obs}
+  $\a$ es ángulo constructible si y solo si $\cos\a$ y $\sin\a$ son constructibles.
+\end{obs}
+
+\begin{proposition}
+  $\pi/9$ no es constructible.
+\end{proposition}
+\begin{proof}
+  Sea $\a = \cos(\pi/9)$. Entonces
+  \[ \frac{1}{2} = \cos\br{\frac{\pi}{3}} = \cos\br{3 \c \frac{\pi}{9}} = 4 \cos^3\br{\frac{\pi}{9}} - 3 \cos\br{\frac{\pi}{9}}. \]
+  Luego $\pi/3$ es raíz de $4x^3 - 3x - 1/2$, pero este polinomio es irreducible. Por lo tanto $\pi/9$ no es constructible.
+\end{proof}
+
+\fecha{Clase 28. Miércoles 24 de Junio}
+
+\fecha{Clase 29. Miércoles 1 de Julio}
+
+\begin{proposition}
+  La clausura algebraica es única (salvo isomorfismo).
+\end{proposition}
+
 %\fecha{Clase 30.}
 
 \end{document}
